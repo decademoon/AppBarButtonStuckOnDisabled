@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="AppBarButtonStuckOnDisabled.Page1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppBarButtonStuckOnDisabled"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Required">
+    
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="but1" Icon="Accept" Label="broken" Command="{Binding Task1Command}" />
+            <AppBarButton x:Name="but2" Icon="Accept" Label="working" Command="{Binding Task2Command}" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid>
+        <TextBlock FontSize="20" TextWrapping="Wrap" Margin="10">
+            <Run>Tap either button to start a task.</Run><LineBreak /><LineBreak />
+            <Run>The button will be disabled for the duration of the task (2 seconds).</Run><LineBreak /><LineBreak />
+            <Run>After the task is done, the button will be enabled.</Run><LineBreak /><LineBreak />
+            <Run>If you tap the first button, then navigate backward while the button is disabled,
+            then wait for the task to complete (2 seconds), then navigate forward, the button
+            will be permanently disabled.</Run><LineBreak /><LineBreak />
+            <Run>The second button manually clears the IsEnabled local value in OnNavigatedTo(). (Why is this necessary?)</Run>
+        </TextBlock>
+    </Grid>
+</Page>
